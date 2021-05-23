@@ -27,21 +27,21 @@ app.layout = html.Div(children = [
 ])
 layout_tab_2 = html.Div(children=[
     html.H6("Recommending you favorite book"),
-    html.Div(["Search Your Book By Titles: ", dcc.Input(id='my-input', value='', type='text')]),
-    html.Br(),
-    html.Div(["Search Your Book By Authors: ", dcc.Input(id='my-input', value='', type='text')]),
+    html.Div(["Search Your Book By Titles: ", dcc.Input(id='my-input', placeholder='title', type='text')]),
     html.Br(),
     html.Div(id='my-output'),
 ])
 
 @app.callback(
-    Output(component_id='my-output', component_property='children'),
+    Output('my-output', component_property='children'),
     Input(component_id='my-input', component_property='value'),
 )
 def update_output_div(input_value):
-    sep = title_contains_word(input_value)
+    val = input_value
+    sep = title_contains_word(val)
     return [
         dash_table.DataTable(
+            id='data_table',
             data=sep.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in sep.columns],
             style_data={
@@ -49,15 +49,6 @@ def update_output_div(input_value):
                 'maxWidth': '100px',
                 'minWidth': '100px',
             },
-            style_cell_conditional=[
-                {
-                    'if': {'column_id': 'Region'},
-                    'width': '250px'
-                },
-            ],
-            style_table={
-                'overflowX': 'auto'
-            }
         )
     ]
 def title_contains_word(word):
@@ -67,9 +58,12 @@ def title_contains_word(word):
     """
     rows = []
     for i in range(df.shape[0]):
+        if word == None:
+            continue
         if word in df['book_title'].iloc[i].decode('utf-8'):
             rows.append(i)
     filtered = df.iloc[list(rows)]
+    print(filtered)
     return filtered
 
 @app.callback(
