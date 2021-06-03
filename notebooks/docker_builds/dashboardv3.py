@@ -29,8 +29,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 # %matplotlib inline
 import seaborn as sns
 
-df1 = pd.read_csv('../dataset/books_cleaned.csv')
-df2 = pd.read_csv('../dataset/books_authors_final.csv')
+df1 = pd.read_csv('dataset/books_cleaned.csv')
+df2 = pd.read_csv('dataset/books_authors_final.csv')
 book_titles_dict1 = df1['book_title'].to_dict()
 opt1 = []
 for k,v in book_titles_dict1.items():
@@ -365,7 +365,7 @@ def update_output2(value):
      Input("generes", "value"),
      Input('slider', 'value')])
 def display_chart(attr, genere,slider):
-    df=pd.read_csv('../data/books_added_amzn.csv',error_bad_lines = False)
+    df=pd.read_csv('dataset/books_added_amzn.csv',error_bad_lines = False)
     if(genere != 'All'):
         df = df[df['genres'].astype(str).str.contains(genere)]
 #         df = df[df['genres'].astype(str).str.contains('Fiction')]['book_rating'].to_frame()
