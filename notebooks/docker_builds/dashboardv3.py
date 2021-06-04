@@ -628,7 +628,8 @@ def display_genres_from_country(attr):
     df=pd.read_csv('./dataset/countries_genres_freq.csv', error_bad_lines = False)
     df_genres_list = list(df['genres'])
     fig = go.Figure(go.Barpolar(r=list(df[attr]), 
-                                theta=df_genres_list))
+                                theta=df_genres_list,
+                                marker_color='coral')
     fig.update_layout(title='Genre Distribution for {}'.format(attr))
     return fig
 
