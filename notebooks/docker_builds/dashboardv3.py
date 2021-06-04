@@ -178,8 +178,8 @@ app.layout = html.Div([
     dcc.Tabs(id='tabs-example',
              value='Data Exploration',
              children=[
-                dcc.Tab(label='Genres Distribution for different contries', 
-                        value='Genres Distribution for different contries',
+                dcc.Tab(label='Genres Distribution for different countries', 
+                        value='Genres Distribution for different countries',
                         style=tab_style, selected_style=tab_selected_style),
                 dcc.Tab(label='Data Exploration based on Genres',
                         value='Data Exploration based on Genres',
@@ -200,7 +200,7 @@ app.layout = html.Div([
 @app.callback(Output('tabs-example-content', 'children'),
               Input('tabs-example', 'value'))
 def render_content(tab):
-    if tab == 'Genres Distribution for different contries':
+    if tab == 'Genres Distribution for different countries':
         return [
             html.H3('Figure for Genres',style={'font-size':'25px','color':'#10b09b','margin':'auto','margin-top':'10px','text-align':'center'}),
             dcc.Graph(
@@ -436,7 +436,7 @@ def render_content(tab):
                     {"label": "Zimbabwe", "value": "Zimbabwe" },
                     {"label": "Åland", "value": "Åland" },
                             ],
-                value='All'
+                value='India'
             ),
         ]
 
@@ -630,7 +630,7 @@ def display_genres_from_country(attr):
     fig = go.Figure(go.Barpolar(r=list(df[attr]), 
                                 theta=df_genres_list,
                                 marker_color='coral'))
-    fig.update_layout(title='Genre Distribution for {}'.format(attr))
+    fig.update_layout(title={'text':'Genre Distribution for {}'.format(attr)})
     return fig
 
 
