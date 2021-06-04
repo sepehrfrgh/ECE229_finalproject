@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import math
 import nltk
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 import re
 import string
@@ -28,7 +29,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import seaborn as sns
 
 df1 = pd.read_csv('dataset/books_cleaned.csv')
-df2 = pd.read_csv('dataset/books_authors_final.csv')
+df2 = pd.read_csv('dataset/books_authors_final2.csv')
 book_titles_dict1 = df1['book_title'].to_dict()
 opt1 = []
 for k,v in book_titles_dict1.items():
@@ -115,6 +116,7 @@ def recommend_desc(book):
 
     return [match, df1.iloc[final_index,:]['book_title'], df1.iloc[final_index,:]['book_desc'],
             df1.iloc[final_index,:]['book_rating'], df1.iloc[final_index,:]['book_pages'], df1.iloc[final_index,:]['book_authors'], df1.iloc[final_index,:]['image_url']]
+
 app = dash.Dash()
 mint = '#6dc9c0'
 sky = '#8cd6e6'
@@ -123,9 +125,10 @@ tabs_styles = {
 }
 
 tab_style = {
-    'borderBottom': '1px solid #d6d6d6',
+    'borderBottom': '1px solid #b5b3b3',
     'vertical-align': 'middle',
-    'color':'#ff5f03',#sky,
+    'background-color':'#6AB187',
+    'color':'white',#sky,
 #     'padding': '0px',
     'fontSize': 20
 }
@@ -140,7 +143,12 @@ tab_selected_style = {
     'vertical-align': 'middle'
 }
 
-
+body = {
+    'height':'100%',
+    'margin': '0',
+#     'background':'#dcdedc',
+    #'background-size': '500px auto'
+}
 
 h2 = {
     "color": '#de9714',
@@ -163,9 +171,10 @@ h6={"color": 'black',
 
 
 app.layout = html.Div([
-
+html.Header([
     html.H1('Book Hunt Dashboard',
-            style={'color':'#e04a09',
+            style={'color':'#191970',
+                   'font-weight': 'bold',
                    'margin':'auto',
                    'margin-top':'10px',
                    'margin-bottom':'10px',
@@ -173,16 +182,18 @@ app.layout = html.Div([
                    'font-size':'40px'
                   }
            ),
-    html.Div('This ia an interactive dashboards for users to explore, search and get recommandation from our book dataset',
-           style=h2),
+    html.H2('This is an interactive dashboard for users to explore, search and get recommendations from our book dataset'
+           ,style={'font-weight': 'bold','color':'#191970','text-align':'center'})],
+    style={"background-image": "url(https://media.istockphoto.com/vectors/books-seamless-pattern-vector-id470721440?k=6&m=470721440&s=612x612&w=0&h=OtHvCXQICZ0hXiJJT0tWYrwZznqYw_ncU307tQDrDUA=",
+}),
     dcc.Tabs(id='tabs-example',
              value='Data Exploration',
              children=[
-                dcc.Tab(label='Genres Distribution for different countries', 
-                        value='Genres Distribution for different countries',
+                dcc.Tab(label='Genres Distribution for Different Countries', 
+                        value='Genres Distribution for Different Countries',
                         style=tab_style, selected_style=tab_selected_style),
-                dcc.Tab(label='Data Exploration based on Genres',
-                        value='Data Exploration based on Genres',
+                dcc.Tab(label='Data Exploration Based on Genres',
+                        value='Data Exploration Based on Genres',
                         style=tab_style, selected_style=tab_selected_style),
                 dcc.Tab(label='Search Engine',
                         value='Search Engine',
@@ -193,24 +204,23 @@ app.layout = html.Div([
              style=tabs_styles),
 
     html.Div(id='tabs-example-content',style={'width':'80%','margin-top':'10px','margin':'auto'})
-    ])
+    ],style=body)
 
 
 
 @app.callback(Output('tabs-example-content', 'children'),
               Input('tabs-example', 'value'))
 def render_content(tab):
-    if tab == 'Genres Distribution for different countries':
-        return [
-            html.H3('Figure for Genres',style={'font-size':'25px','color':'#10b09b','margin':'auto','margin-top':'10px','text-align':'center'}),
+    if tab == 'Genres Distribution for Different Countries':
+        return [html.P('Choose your desired country to see its distribution of frequent books genres',style={'background':'yellow','font-size':'22px','color':'black','margin':'auto','margin-top':'10px','text-align':'center'}),
             dcc.Graph(
                 id='graph_Genres',
-                style={'width': '45vh', 'height': '45vh', 'vertical-align': 'middle',
+                style={'width': '59vh', 'height': '59vh', 'vertical-align': 'middle',
                                   "display": "block",
             "margin-left": "auto",
             "margin-right": "auto",}
             ),
-            html.Div('Select an Country:', style={'text-align': 'center', 
+            html.Div('Select a Country:', style={'text-align': 'center', 
                                                     'margin':'auto',
                                                     'margin-top':'10px',
                                                     'margin-bottom':'10px',
@@ -437,16 +447,16 @@ def render_content(tab):
                     {"label": "Åland", "value": "Åland" },
                             ],
                 value='India'
-            ),
+            )
         ]
 
-    elif tab == 'Data Exploration based on Genres':
-        return [
+    elif tab == 'Data Exploration Based on Genres':
+        return [html.P('Choose the desired book attributes and genre to see the distribution of attribute values',style={'background':'yellow','font-size':'22px','color':'black','margin':'auto','margin-top':'10px','text-align':'center'}),
             html.H3('Histogram of Attributes',style={'font-size':'25px','color':'#10b09b','margin':'auto','margin-top':'10px','text-align':'center'}),
             dcc.Graph(
                 id='graph_attributes'
             ),
-            html.Div('Select an Attribute:', style={'text-align': 'center',
+            html.Div('Select a Attribute:', style={'text-align': 'center',
                                                     'margin':'auto',
                                                     'margin-top':'10px',
                                                     'margin-bottom':'10px',
@@ -465,7 +475,7 @@ def render_content(tab):
                             ],
                 value='book_rating'
             ),
-            html.Div('Select an Genere:', style={'text-align': 'center',
+            html.Div('Select a Genre:', style={'text-align': 'center',
                                                     'margin':'auto',
                                                     'margin-top':'10px',
                                                     'margin-bottom':'10px',
@@ -496,7 +506,7 @@ def render_content(tab):
                             ],
                 value='All'
             ),
-            html.Div('Percent of Data to Display:', style={'text-align': 'center',
+            html.Div('Percentage of data to display:', style={'text-align': 'center',
                                                     'margin':'auto',
                                                     'margin-top':'10px',
                                                     'margin-bottom':'10px',
@@ -520,7 +530,8 @@ def render_content(tab):
         ]
 
     elif tab == 'Search Engine':
-        return html.Div([html.Br(),
+        return [html.P('This is a comprehensive search engine for book dataset. Type your book title or select dropdown to see its detailed information',style={'background':'yellow','font-size':'22px','color':'black','margin':'auto','margin-top':'10px','text-align':'center'}),
+                html.Br(),
                          dcc.Dropdown(
                              id='demo-dropdown2',
                              options= opt2,
@@ -549,10 +560,12 @@ def render_content(tab):
                                        "background-color": "Aliceblue",
                                        "opacity": "0.8"
 #                                        "width":"1100px"
-                                      }))])
+                                      })),html.Div(style={'height':"100%", 'background':"grey"
+                                      })]
 
     elif tab == 'Make a Recommandation':
-        return html.Div(children =[html.Br(),
+        return html.Div(children =[html.P('This is a recommendation system that suggests you closest book to your search. Type your book title or select dropdown to get our recommendation for the next book to read',style={'background':'yellow','font-size':'22px','color':'Black','margin':'auto','margin-top':'10px','text-align':'center'}),
+                                   html.Br(),
                        dcc.Dropdown(
                            id='demo1-dropdown',
                            options= opt1,
@@ -625,12 +638,12 @@ def display_chart(attr, genere,slider):
     Input("countries", "value")
 )
 def display_genres_from_country(attr):
-    df=pd.read_csv('./dataset/countries_genres_freq.csv', error_bad_lines = False)
+    df=pd.read_csv('dataset/countries_genres_freq2csv.csv', error_bad_lines = False)
     df_genres_list = list(df['genres'])
     fig = go.Figure(go.Barpolar(r=list(df[attr]), 
                                 theta=df_genres_list,
                                 marker_color='coral'))
-    fig.update_layout(title={'text':'Genre Distribution for {}'.format(attr)})
+    fig.update_layout(title={'text':'Distribution of Frequent genres for {}'.format(attr),'x':0.5,'y':0.9,'xanchor': 'center','yanchor': 'top'} )
     return fig
 
 
