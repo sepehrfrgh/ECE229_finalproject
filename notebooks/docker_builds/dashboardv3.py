@@ -12,6 +12,7 @@ from io import BytesIO
 import matplotlib.pyplot as plt
 import dash
 import dash_core_components as dcc
+import plotly.graph_objects as go
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.express as px
@@ -620,16 +621,15 @@ def display_chart(attr, genere,slider):
 
 
 @app.callback(
-    Output("graph_genres", "figure"),
+    Output("graph_Genres", "figure"),
     Input("countries", "value")
 )
 def display_genres_from_country(attr):
-    df=pd.read_csv('../data/countries_genres_freq.csv', error_bad_lines = False)
-    countries = list(df.columns)[1:]
+    df=pd.read_csv('./dataset/countries_genres_freq.csv', error_bad_lines = False)
     df_genres_list = list(df['genres'])
     fig = go.Figure(go.Barpolar(r=list(df[attr]), 
                                 theta=df_genres_list))
-
+    fig.update_layout(title='Genre Distribution for {}'.format(attr))
     return fig
 
 
