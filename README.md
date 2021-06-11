@@ -38,7 +38,8 @@ Find Sphinx html builds under notebook/doc/build/html
 **Testing**
 
 
-Name                  Stmts   Miss  Cover   Missing
+Name                  Stmts   Miss  Cover   Missing 
+
 \---------------------------------------------------
 dashboardv3.py          149     30    80%   63, 242-360, 389-391, 410-416, 424-436, 448
 test_dashboardv3.py      10      0   100%
