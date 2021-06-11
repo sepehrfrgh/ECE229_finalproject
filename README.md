@@ -9,7 +9,7 @@ One of the most challenging problems for book lovers is to find exciting books a
 **Structure of files**
 
 - Book-recomendation-engine (contains the Jupyter notebook for the recommendation system)
-- 
+ 
 	- Book recommender - Varun.ipynb (code used for creating recommendation tab)
 	
 	- books_cleaned.csv (the cleaned dataset from book_data.csv named books_cleaned.csv)
