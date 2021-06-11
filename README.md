@@ -8,8 +8,14 @@ One of the most challenging problems for book lovers is to find exciting books a
 
 **Structure of files**
 
-- Book-recomendation-engine
+- Book-recomendation-engine (contains the Jupyter notebook for the recommendation system)
+- 
+	- Book recommender - Varun.ipynb (code used for creating recommendation tab)
+	
+	- books_cleaned.csv (the cleaned dataset from book_data.csv named books_cleaned.csv)
 
+	- further cleaning of the dataset.ipynb (includes code for capitalizing author names, ...)
+	
 - data
 	- amazon_best_selling.csv (551 rows, 7 columns) Includes amazon best selling books
 	
@@ -23,10 +29,22 @@ One of the most challenging problems for book lovers is to find exciting books a
 	
 	- countries_genres_freq.csv CREATED from book_data.csv and authors_df.csv dataframes containing number of genres frequencies for different countries
 	
+	- books_cleaned.csv (cleaned book_data.csv)
 	
-- Keyword-engine
+	
+- Keyword-engine (code for the search engine with the major feature of review keywords along with countries genre distribution)
 
-- Notebooks
+	- Keyword_prep_search.ipynb (Includes Preprocessing and book search codes)
+
+	- Keyword Engine.ipynb (Includes code used for creating the corresponding tab for the search engine)
+
+	- books_authors_final.csv (the final dataset used for the search tab)
+
+- Notebooks (Includes the combined code for creating the dashboard)
+
+	- **Dashboard.ipynb** (The final dashboard code)
+
+	- 
 
 - Proposal_OKR.pdf (proposal and weekly OKRs)
 
