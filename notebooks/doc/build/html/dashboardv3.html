@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dashboardv3 module &#8212; Book-Recommendation 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dashboardv3">
+<span id="dashboardv3-module"></span><h1>dashboardv3 module<a class="headerlink" href="#module-dashboardv3" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboardv3.book_engine">
+<span class="sig-prename descclassname"><span class="pre">dashboardv3.</span></span><span class="sig-name descname"><span class="pre">book_engine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">book</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboardv3.book_engine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grab book and seperate out authors and return book information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>book</strong> – string</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>All book information</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboardv3.display_chart">
+<span class="sig-prename descclassname"><span class="pre">dashboardv3.</span></span><span class="sig-name descname"><span class="pre">display_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genere</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slider</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboardv3.display_chart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accepts country name and returns a figure showing genres distribution for that country.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr</strong> (<em>String</em>) – Attribute name e.g. Book rates.</p></li>
+<li><p><strong>genere</strong> (<em>String</em>) – Selected genre.</p></li>
+<li><p><strong>slider</strong> (<em>float</em>) – How many stuff we want to show in the figure</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Figure shows the attributes distribution for selected book genre.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>plotly.graph_objects.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboardv3.display_genres_from_country">
+<span class="sig-prename descclassname"><span class="pre">dashboardv3.</span></span><span class="sig-name descname"><span class="pre">display_genres_from_country</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboardv3.display_genres_from_country" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accepts country name and returns a figure showing genres distribution for that country.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>attr</strong> (<em>String</em>) – String for the country name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Figure shows genres distribution for selected country.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>plotly.graph_objects.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboardv3.get_cosine_sim">
+<span class="sig-prename descclassname"><span class="pre">dashboardv3.</span></span><span class="sig-name descname"><span class="pre">get_cosine_sim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">strs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboardv3.get_cosine_sim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the cosine similarity between strings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strs</strong> – strings to be compared</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>integer representing the cosine similarity</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboardv3.get_jaccard_sim">
+<span class="sig-prename descclassname"><span class="pre">dashboardv3.</span></span><span class="sig-name descname"><span class="pre">get_jaccard_sim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboardv3.get_jaccard_sim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the jaccard similarity between strings
+:param str1: String 1
+:param str2: String 2
+:return: integer representing jaccard similarity between strings</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboardv3.get_vectors">
+<span class="sig-prename descclassname"><span class="pre">dashboardv3.</span></span><span class="sig-name descname"><span class="pre">get_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">strs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboardv3.get_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the vectors from strings’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strs</strong> – strings to be vectorized</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>array of vectors</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboardv3.recommend_desc">
+<span class="sig-prename descclassname"><span class="pre">dashboardv3.</span></span><span class="sig-name descname"><span class="pre">recommend_desc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">book</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboardv3.recommend_desc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Model to recommend a book based on another book. Model uses book descriptions, authors, and genres to find the book with the closest closest similarity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>book</strong> (<em>String</em>) – String for book to be looked up. Does not have to be exact match.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[Corrected string of input, Recommended book Title, Recommended Book Description, Recommended Book Rating, Recommended Book Length, Recommended Book Author,Recommended Book URL]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboardv3.render_content">
+<span class="sig-prename descclassname"><span class="pre">dashboardv3.</span></span><span class="sig-name descname"><span class="pre">render_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tab</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboardv3.render_content" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes in the name of the tab and generate the content for different tabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str.</em>) – tab.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list – A list of HTML object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboardv3.update_output1">
+<span class="sig-prename descclassname"><span class="pre">dashboardv3.</span></span><span class="sig-name descname"><span class="pre">update_output1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboardv3.update_output1" title="Permalink to this definition">¶</a></dt>
+<dd><p>The purpose of this function is to generate the output for the dash tab “Make a Recommendation”.
+The function takes in the value of the user selected drop down to display the top recommendations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – User selected book</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns values for different book attributes of the top recommended book</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dashboardv3.update_output2">
+<span class="sig-prename descclassname"><span class="pre">dashboardv3.</span></span><span class="sig-name descname"><span class="pre">update_output2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dashboardv3.update_output2" title="Permalink to this definition">¶</a></dt>
+<dd><p>The purpose of this function is to generate the output for the dash tab “Make a Recommendation”.
+The function takes in the value of the user selected drop down to display the top recommendations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – User selected book</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns values for different book attributes of the top recommended book</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Book-Recommendation</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Default.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/dashboardv3.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -28,8 +28,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 # %matplotlib inline
 import seaborn as sns
 
-df1 = pd.read_csv('dataset/books_cleaned.csv')
-df2 = pd.read_csv('dataset/books_authors_final2.csv')
+df1 = pd.read_csv('../docker_builds/dataset/books_cleaned.csv')
+df2 = pd.read_csv('../docker_builds/dataset/books_authors_final2.csv')
 book_titles_dict1 = df1['book_title'].to_dict()
 opt1 = []
 for k,v in book_titles_dict1.items():
@@ -47,8 +47,10 @@ for k,v in book_titles_dict2.items():
 def book_engine(book):
     """
     Grab book and seperate out authors and return book information
+
     :param book: string
     :return: All book information
+
     """
     titles = list(df2['title'])
     response = requests.get(df2.iloc[0]['image_url'])
@@ -68,9 +70,12 @@ def book_engine(book):
 
 def get_cosine_sim(*strs):
     """
+
     Get the cosine similarity between strings
+
     :param strs: strings to be compared
     :return: integer representing the cosine similarity
+
     """
     vectors = [t for t in get_vectors(*strs)]
     return cosine(*vectors)
@@ -89,9 +94,12 @@ def get_jaccard_sim(str1, str2):
 
 def get_vectors(*strs):
     """
-    Get the vectors from strings
-    :param strs: strngs to be vectorized
+
+    Get the vectors from strings'
+
+    :param strs: strings to be vectorized
     :return: array of vectors
+
     """
     text = []
     for t in strs:
@@ -106,19 +114,14 @@ def get_vectors(*strs):
 
 def recommend_desc(book):
     """
+
     Model to recommend a book based on another book. Model uses book descriptions, authors, and genres to find the book with the closest closest similarity
+
     :param book: String for book to be looked up. Does not have to be exact match.
     :type book: String
-    :return:
-    [Corrected string of input,
-    Recommended book Title,
-    Recommended Book Description,
-    Recommended Book Rating,
-    Recommended Book Length,
-    Recommended Book Author,
-    Recommended Book URL]
-
+    :return: [Corrected string of input, Recommended book Title, Recommended Book Description, Recommended Book Rating, Recommended Book Length, Recommended Book Author,Recommended Book URL]
     :rtype: List
+
     """
 
     assert isinstance(book, str)
@@ -126,7 +129,7 @@ def recommend_desc(book):
     if len(df1[df1['book_title'] == book.lower()]) > 0:
         desc = list(df1[df1['book_title'] == book.lower()]['book_desc'])[0]
         print('Found match: ', book, '\n')
-        assert desc is not ''
+        assert desc != ''
         match = book
     else:
         index = np.argmax([fuzz.ratio(book.lower(), i) for i in list(df1['book_title']) if type(i)== str])
@@ -153,7 +156,7 @@ def recommend_desc(book):
 
     response = requests.get(df1.iloc[final_index,:]['image_url'])
 
-    assert response is not ''
+    assert response != ''
 
     img = Image.open(BytesIO(response.content))
 
@@ -260,7 +263,7 @@ def render_content(tab):
 
     :param name: tab.
     :type name: str.
-    :returns:  list -- A list of HTML object.
+    :return:  list -- A list of HTML object.
 
     """
     assert isinstance(tab,str)
@@ -651,6 +654,17 @@ def render_content(tab):
     Output('url1', 'children'),
     [dash.dependencies.Input('demo-dropdown2', 'value')])
 def update_output1(value):
+    """ 
+
+    The purpose of this function is to generate the output for the dash tab "Make a Recommendation". 
+    The function takes in the value of the user selected drop down to display the top recommendations.
+
+    :param value: User selected book
+    :type value: str
+    :return: Returns values for different book attributes of the top recommended book
+    :rtype: str
+
+    """
     x = book_engine(value)
     img = html.Img(src= x[8], style={'float':'left','width':'20%',"min-width": "300px", "height": "400px",'margin-bottom':'20px','margin':'auto'})
     return x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], img
@@ -664,13 +678,16 @@ def update_output1(value):
     Output('url', 'children'),
     [dash.dependencies.Input('demo1-dropdown', 'value')])
 def update_output2(value):
-    """ 
+    """
+
     The purpose of this function is to generate the output for the dash tab "Make a Recommendation". 
     The function takes in the value of the user selected drop down to display the top recommendations.
+
     :param value: User selected book
     :type value: str
     :return: Returns values for different book attributes of the top recommended book
     :rtype: str
+
     """
     x = recommend_desc(value)
     img = html.Img(src= x[6], style={'width':'10%',"min-width": "300px", "maxheight": "600px",'margin-bottom':'20px','margin':'auto'})
@@ -684,7 +701,9 @@ def update_output2(value):
      Input('slider', 'value')])
 def display_chart(attr, genere,slider):
     """
+
     Accepts country name and returns a figure showing genres distribution for that country.
+
     :param attr: Attribute name e.g. Book rates.
     :type attr: String
     :param genere: Selected genre.
@@ -693,6 +712,7 @@ def display_chart(attr, genere,slider):
     :type slider: float
     :return: Figure shows the attributes distribution for selected book genre.
     :rtype: plotly.graph_objects.Figure
+
     """
     df=pd.read_csv('dataset/books_added_amzn.csv',error_bad_lines = False)
     if(genere != 'All'):
@@ -714,11 +734,14 @@ def display_chart(attr, genere,slider):
 )
 def display_genres_from_country(attr):
     """
+
     Accepts country name and returns a figure showing genres distribution for that country.
+
     :param attr: String for the country name.
     :type attr: String
     :return: Figure shows genres distribution for selected country.
     :rtype: plotly.graph_objects.Figure
+
     """
     df=pd.read_csv('dataset/countries_genres_freq2csv.csv', error_bad_lines = False)
     df_genres_list = list(df['genres'])
