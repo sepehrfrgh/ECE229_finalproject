@@ -36,13 +36,13 @@ One of the most challenging problems for book lovers is to find exciting books a
 Find Sphinx html builds under notebook/doc/build/html
 
 **Testing**
-<rawtext>
+
 
 Name                  Stmts   Miss  Cover   Missing
----------------------------------------------------
+\---------------------------------------------------
 dashboardv3.py          149     30    80%   63, 242-360, 389-391, 410-416, 424-436, 448
 test_dashboardv3.py      10      0   100%
----------------------------------------------------
+\---------------------------------------------------
 TOTAL                   159     30    81%
 
-</rawtext>
+
