@@ -9,7 +9,6 @@ One of the most challenging problems for book lovers is to find exciting books a
 
 As a user who is looking for a new book, I want to be able to find recommendations based on my preferred genre, author, writing style, and publishing year. I want to be able to see how the book I’m reading fits into each category and to find books similar to the books I like. As a user with preferences in the book's attribute, I want to be able to sort through the library and search through books that match my descriptions. As a new reader, I want to be able to visually see the availability of genres and other book attributes and to find easy to read books based on which ones I want to try.  As an avid reader, I want to be able to input all the books I’ve read before, and to get recommendations for books I might want to try next. 
 
-
 **Structure of files**
 
 - Book-recomendation-engine (contains the Jupyter notebook for the recommendation system)
@@ -35,6 +34,7 @@ As a user who is looking for a new book, I want to be able to find recommendatio
 	
 	- books_cleaned.csv (cleaned book_data.csv)
 	
+- img (images used in readme file)
 	
 - Keyword-engine (code for the search engine with the major feature of review keywords along with countries genre distribution)
 
@@ -71,6 +71,10 @@ test_dashboardv3.py      10      0   100%
 TOTAL                   159     30    81%
 	
 ```
+
+**AWS framework**
+
+<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/AWS_deployment_arcchitecture.png" width="500">
 
 **Running our code**
 
@@ -109,4 +113,5 @@ Python 3.8
 - dash.dependencies
 - dash.exceptions
 - scipy
+
 
