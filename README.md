@@ -20,6 +20,7 @@ As a user who is looking for a new book, I want to be able to find recommendatio
 	- further cleaning of the dataset.ipynb (includes code for capitalizing author names, ...)
 	
 - data
+
 	- amazon_best_selling.csv (551 rows, 7 columns) Includes amazon best selling books
 	
 	- authors_dataframe_link.md (209417 rows, 20 columns) link to goodreads dataset
@@ -33,6 +34,8 @@ As a user who is looking for a new book, I want to be able to find recommendatio
 	- countries_genres_freq.csv CREATED from book_data.csv and authors_df.csv dataframes containing number of genres frequencies for different countries
 	
 	- books_cleaned.csv (cleaned book_data.csv)
+
+<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/data_preparation.png" width="500">
 	
 - img (images used in readme file)
 	
@@ -114,4 +117,18 @@ Python 3.8
 - dash.exceptions
 - scipy
 
+**Our tabs**
+
+Data exploration (different attributes for different genres and genres distribution for each country) 
+
+Note: The genre distribution is depicted for the most frequent genres. Some countries might not have any books in those genres.
+
+<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/date_visualization.png" width="500">
+
+
+Books recommendation engine
+<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/recommendation.png" width="500">
+
+Books search engine
+<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/search.png" width="500">
 
