@@ -43,6 +43,12 @@ for k,v in book_titles_dict2.items():
     temp_d["value"] = v
     opt2.append(temp_d)
 def book_engine(book):
+    """
+    Grab book and seperate out authors and return book information
+    :param book: string
+    :return: All book information
+    """
+    assert isinstance(book, str)
     titles = list(df2['title'])
     response = requests.get(df2.iloc[0]['image_url'])
     img = Image.open(BytesIO(response.content))
@@ -55,6 +61,8 @@ def book_engine(book):
         if i == len(authorsList) - 1:
             continue
         authorStr += " | "
+
+    assert authorStr is not ''
     return [df2.iloc[index]['title'], authorStr,
             df2.iloc[index]['average rating'], df2.iloc[index]['genres'], df2.iloc[index]['number of pages'], df2.iloc[index]["reviews' keywords"], df2.iloc[index]['description'],
             df2.iloc[index]['more about author(s)'], df2.iloc[index]['image_url']]
@@ -64,6 +72,8 @@ def get_cosine_sim(*strs):
     return cosine(*vectors)
 
 def get_jaccard_sim(str1, str2):
+    assert isinstance(str1, str)
+    assert isinstance(str2, str)
     a = set(str1.split())
     b = set(str2.split())
     c = a.intersection(b)
@@ -79,6 +89,8 @@ def get_vectors(*strs):
 
     vectorizer = CountVectorizer(text)
     vectorizer.fit(text)
+    assert vectorizer is not ''
+
     return vectorizer.transform(text).toarray()
 def recommend_desc(book):
     """
@@ -99,8 +111,8 @@ def recommend_desc(book):
 
     assert isinstance(book, str)
 
-    if len(df1[df1['book_title'] == book.lower()]) > 0:
-        desc = list(df1[df1['book_title'] == book.lower()]['book_desc'])[0]
+    if len(df1[df1['book_title'] == book]) > 0:
+        desc = list(df1[df1['book_title'] == book]['book_desc'])[0]
         # print('Found match: ', book, '\n')
         assert desc is not ''
         match = book
