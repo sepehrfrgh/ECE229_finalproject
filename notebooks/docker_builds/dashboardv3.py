@@ -189,7 +189,7 @@ html.Header([
     dcc.Tabs(id='tabs-example',
              value='Data Exploration',
              children=[
-                dcc.Tab(label='Genres Distribution for Different Countries', 
+                dcc.Tab(label='Genres Distribution for Different Countries',
                         value='Genres Distribution for Different Countries',
                         style=tab_style, selected_style=tab_selected_style),
                 dcc.Tab(label='Data Exploration Based on Genres',
@@ -211,6 +211,16 @@ html.Header([
 @app.callback(Output('tabs-example-content', 'children'),
               Input('tabs-example', 'value'))
 def render_content(tab):
+    """
+
+    This function takes in the name of the tab and generate the content for different tabs.
+
+    :param name: tab.
+    :type name: str.
+    :returns:  list -- A list of HTML object.
+    
+    """
+
     if tab == 'Genres Distribution for Different Countries':
         return [html.P('Choose your desired country to see its distribution of frequent books genres',style={'background':'yellow','font-size':'22px','color':'black','margin':'auto','margin-top':'10px','text-align':'center'}),
             dcc.Graph(
@@ -220,11 +230,11 @@ def render_content(tab):
             "margin-left": "auto",
             "margin-right": "auto",}
             ),
-            html.Div('Select a Country:', style={'text-align': 'center', 
+            html.Div('Select a Country:', style={'text-align': 'center',
                                                     'margin':'auto',
                                                     'margin-top':'10px',
                                                     'margin-bottom':'10px',
-                                                    'color': '#10b09b', 
+                                                    'color': '#10b09b',
                                                     'fontSize': 25,
                                                     'font-weight': 'bold'}),
             dcc.Dropdown(
@@ -640,7 +650,7 @@ def display_chart(attr, genere,slider):
 def display_genres_from_country(attr):
     df=pd.read_csv('dataset/countries_genres_freq2csv.csv', error_bad_lines = False)
     df_genres_list = list(df['genres'])
-    fig = go.Figure(go.Barpolar(r=list(df[attr]), 
+    fig = go.Figure(go.Barpolar(r=list(df[attr]),
                                 theta=df_genres_list,
                                 marker_color='coral'))
     fig.update_layout(title={'text':'Distribution of Frequent genres for {}'.format(attr),'x':0.5,'y':0.9,'xanchor': 'center','yanchor': 'top'} )
