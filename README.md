@@ -121,6 +121,8 @@ Python 3.8
 
 **Our tabs**
 
+Link to our website: http://34.214.118.183:8050/
+
 Data exploration (different attributes for different genres and genres distribution for each country) 
 
 Note: The genre distribution is depicted for the most frequent genres. Some countries might not have any books in those genres.
