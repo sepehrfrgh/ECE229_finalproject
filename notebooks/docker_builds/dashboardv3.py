@@ -218,9 +218,13 @@ def render_content(tab):
     :param name: tab.
     :type name: str.
     :returns:  list -- A list of HTML object.
-    
-    """
 
+    """
+    assert isinstance(tab,str)
+    assert tab in ['Genres Distribution for Different Countries',
+                    'Data Exploration Based on Genres',
+                    'Search Engine',
+                    'Make a Recommandation']
     if tab == 'Genres Distribution for Different Countries':
         return [html.P('Choose your desired country to see its distribution of frequent books genres',style={'background':'yellow','font-size':'22px','color':'black','margin':'auto','margin-top':'10px','text-align':'center'}),
             dcc.Graph(
