@@ -67,11 +67,22 @@ def book_engine(book):
             df2.iloc[index]['average rating'], df2.iloc[index]['genres'], df2.iloc[index]['number of pages'], df2.iloc[index]["reviews' keywords"], df2.iloc[index]['description'],
             df2.iloc[index]['more about author(s)'], df2.iloc[index]['image_url']]
 def get_cosine_sim(*strs):
+    """
+    Get the cosine similarity between strings
+    :param strs: strings to be compared
+    :return: integer representing the cosine similarity
+    """
     #     print(strs)
     vectors = [t for t in get_vectors(*strs)]
     return cosine(*vectors)
 
 def get_jaccard_sim(str1, str2):
+    """
+    Get the jaccard similarity between strings
+    :param str1: String 1
+    :param str2: String 2
+    :return: integer representing jaccard similarity between strings
+    """
     assert isinstance(str1, str)
     assert isinstance(str2, str)
     a = set(str1.split())
@@ -80,6 +91,11 @@ def get_jaccard_sim(str1, str2):
     return float(len(c)) / (len(a) + len(b) - len(c))
 
 def get_vectors(*strs):
+    """
+    Get the vectors from strings
+    :param strs: strngs to be vectorized
+    :return: array of vectors
+    """
     text = []
     for t in strs:
         t = t.translate(str.maketrans('', '', string.punctuation))
