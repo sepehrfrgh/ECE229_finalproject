@@ -1,3 +1,4 @@
+<img width="588" alt="Screen Shot 2021-06-11 at 4 02 23 AM" src="https://user-images.githubusercontent.com/27737573/121652635-d80c6580-ca69-11eb-935b-711588ca78de.png">
 # ECE229_finalproject
 
 **Problem & Background**
@@ -37,8 +38,7 @@ Find Sphinx html builds under notebook/doc/build/html
 
 **Testing**
 
-<div>
-
+```
 Name                  Stmts   Miss  Cover   Missing 
 ---------------------------------------------------
 dashboardv3.py          149     30    80%   63, 242-360, 389-391, 410-416, 424-436, 448
@@ -46,6 +46,6 @@ test_dashboardv3.py      10      0   100%
 ---------------------------------------------------
 TOTAL                   159     30    81%
 	
-</div>
+```
 
 
