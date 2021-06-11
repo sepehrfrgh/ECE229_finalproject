@@ -84,15 +84,35 @@ def get_vectors(*strs):
     return vectorizer.transform(text).toarray()
 def recommend_desc(book):
 
+    """
+    Model to recommend a book based on another book. Model uses book descriptions, authors, and genres to find the book with the closest closest similarity
+    :param book: String for book to be looked up. Does not have to be exact match.
+    :type book: String
+    :return:
+    [Corrected string of input,
+    Recommended book Title,
+    Recommended Book Description,
+    Recommended Book Rating,
+    Recommended Book Length,
+    Recommended Book Author,
+    Recommended Book URL]
+
+    :rtype: List
+    """
+
+    assert isinstance(book, str)
+
     if len(df1[df1['book_title'] == book.lower()]) > 0:
         desc = list(df1[df1['book_title'] == book.lower()]['book_desc'])[0]
         print('Found match: ', book, '\n')
+        assert desc is not ''
         match = book
     else:
         index = np.argmax([fuzz.ratio(book.lower(), i) for i in list(df1['book_title']) if type(i)== str])
         desc = df1.iloc[index,:]['book_desc']
         print('Found closest match: ', df1.iloc[index,:]['book_title'], '\n')
         match = df1.iloc[index,:]['book_title']
+        assert isinstance(match, str)
 
     all_desc = list(df1['book_desc'])
     all_genres = list(df1['genres'])
@@ -111,6 +131,8 @@ def recommend_desc(book):
     final_index = np.nanargmax(similarity)
 
     response = requests.get(df1.iloc[final_index,:]['image_url'])
+
+    assert response is not ''
 
     img = Image.open(BytesIO(response.content))
 
@@ -621,6 +643,14 @@ def update_output1(value):
     Output('url', 'children'),
     [dash.dependencies.Input('demo1-dropdown', 'value')])
 def update_output2(value):
+    """ The purpose of this function is to generate the output for the dash tab "Make a Recommendation". The function takes in the value of the user selected drop down to display the top recommendations.
+
+            :param value: User selected book
+            :type value: str
+
+            :return: Returns values for different book attributes of the top recommended book
+            :rtype: str
+        """
     x = recommend_desc(value)
     img = html.Img(src= x[6], style={'width':'10%',"min-width": "300px", "maxheight": "600px",'margin-bottom':'20px','margin':'auto'})
     l = '{} pages.'.format(str(int(x[4])))
