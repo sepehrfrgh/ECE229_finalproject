@@ -1,5 +1,10 @@
 # ECE229_finalproject
 
+**Problem & Background**
+
+One of the most challenging problems for book lovers is to find exciting books amongst the plethora of books. When we go to the library and buy or borrow books, we risk our time, effort, and potentially money to find a book that we like. To reduce the so-called risks, we want to propose a recommendation system that helps readers choose the books that fit their needs and tastes. To do this, we want to investigate the passing trend and a combination of a book’s attributes such as genre, author and their writing experience, publishing year, etc. Also, other than filtering options, to create a more customized recommendation, the user would adjust the weight of each attribute to generate recommendations based on their preferences. 
+
+
 **Structure of files**
 
 - Book-recomendation-engine
