@@ -424,7 +424,6 @@ def display_chart(attr, genere,slider):
     df=pd.read_csv('../data/books_added_amzn.csv',error_bad_lines = False)
     if(genere != 'All'):
         df = df[df['genres'].astype(str).str.contains(genere)]
-#         df = df[df['genres'].astype(str).str.contains('Fiction')]['book_rating'].to_frame()
     df[attr].to_frame()
     df.sort_values(by=[attr])
     upper_lim = int(df.shape[0]*slider[1]/100)
@@ -434,14 +433,6 @@ def display_chart(attr, genere,slider):
 
     fig = px.histogram(df, x=attr,color_discrete_sequence=[sky])
     return fig
-
-# @app.callback(
-#     Output("graph", "figure"),
-#     [Input("column", "value")])
-# def display_hist(attr):
-#     df=pd.read_csv('../data/books_added_amzn.csv',error_bad_lines = False)
-#     fig = px.histogram(df, x=attr)
-#     return fig
 
 
 if __name__ =='__main__':

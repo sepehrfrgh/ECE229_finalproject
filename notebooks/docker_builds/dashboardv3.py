@@ -45,6 +45,11 @@ for k,v in book_titles_dict2.items():
     temp_d["value"] = v
     opt2.append(temp_d)
 def book_engine(book):
+    """
+    Grab book and seperate out authors and return book information
+    :param book: string
+    :return: All book information
+    """
     titles = list(df2['title'])
     response = requests.get(df2.iloc[0]['image_url'])
     img = Image.open(BytesIO(response.content))
@@ -60,8 +65,8 @@ def book_engine(book):
     return [df2.iloc[index]['title'], authorStr,
             df2.iloc[index]['average rating'], df2.iloc[index]['genres'], df2.iloc[index]['number of pages'], df2.iloc[index]["reviews' keywords"], df2.iloc[index]['description'],
             df2.iloc[index]['more about author(s)'], df2.iloc[index]['image_url']]
+
 def get_cosine_sim(*strs):
-    #     print(strs)
     vectors = [t for t in get_vectors(*strs)]
     return cosine(*vectors)
 
@@ -82,8 +87,8 @@ def get_vectors(*strs):
     vectorizer = CountVectorizer(text)
     vectorizer.fit(text)
     return vectorizer.transform(text).toarray()
-def recommend_desc(book):
 
+def recommend_desc(book):
     """
     Model to recommend a book based on another book. Model uses book descriptions, authors, and genres to find the book with the closest closest similarity
     :param book: String for book to be looked up. Does not have to be exact match.
@@ -643,14 +648,14 @@ def update_output1(value):
     Output('url', 'children'),
     [dash.dependencies.Input('demo1-dropdown', 'value')])
 def update_output2(value):
-    """ The purpose of this function is to generate the output for the dash tab "Make a Recommendation". The function takes in the value of the user selected drop down to display the top recommendations.
-
-            :param value: User selected book
-            :type value: str
-
-            :return: Returns values for different book attributes of the top recommended book
-            :rtype: str
-        """
+    """ 
+    The purpose of this function is to generate the output for the dash tab "Make a Recommendation". 
+    The function takes in the value of the user selected drop down to display the top recommendations.
+    :param value: User selected book
+    :type value: str
+    :return: Returns values for different book attributes of the top recommended book
+    :rtype: str
+    """
     x = recommend_desc(value)
     img = html.Img(src= x[6], style={'width':'10%',"min-width": "300px", "maxheight": "600px",'margin-bottom':'20px','margin':'auto'})
     l = '{} pages.'.format(str(int(x[4])))
@@ -662,10 +667,20 @@ def update_output2(value):
      Input("Genres", "value"),
      Input('slider', 'value')])
 def display_chart(attr, genere,slider):
+    """
+    Accepts country name and returns a figure showing genres distribution for that country.
+    :param attr: Attribute name e.g. Book rates.
+    :type attr: String
+    :param genere: Selected genre.
+    :type genere: String
+    :param slider: How many stuff we want to show in the figure
+    :type slider: float
+    :return: Figure shows the attributes distribution for selected book genre.
+    :rtype: plotly.graph_objects.Figure
+    """
     df=pd.read_csv('dataset/books_added_amzn.csv',error_bad_lines = False)
     if(genere != 'All'):
         df = df[df['genres'].astype(str).str.contains(genere)]
-#         df = df[df['genres'].astype(str).str.contains('Fiction')]['book_rating'].to_frame()
     df[attr].to_frame()
     df.sort_values(by=[attr])
     upper_lim = int(df.shape[0]*slider[1]/100)
@@ -682,6 +697,13 @@ def display_chart(attr, genere,slider):
     Input("countries", "value")
 )
 def display_genres_from_country(attr):
+    """
+    Accepts country name and returns a figure showing genres distribution for that country.
+    :param attr: String for the country name.
+    :type attr: String
+    :return: Figure shows genres distribution for selected country.
+    :rtype: plotly.graph_objects.Figure
+    """
     df=pd.read_csv('dataset/countries_genres_freq2csv.csv', error_bad_lines = False)
     df_genres_list = list(df['genres'])
     fig = go.Figure(go.Barpolar(r=list(df[attr]),
