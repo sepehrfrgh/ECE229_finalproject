@@ -35,6 +35,8 @@ As a user who is looking for a new book, I want to be able to find recommendatio
 	
 	- books_cleaned.csv (cleaned book_data.csv)
 
+Data preprocessing and aggregation
+
 <img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/data_preparation.png" width="700">
 	
 - img (images used in readme file)
