@@ -23,7 +23,7 @@ from collections import Counter
 from sklearn.feature_extraction.text import CountVectorizer
 from scipy.spatial.distance import cosine
 from sklearn.metrics.pairwise import cosine_similarity
-%matplotlib inline
+# %matplotlib inline
 import seaborn as sns
 
 df1 = pd.read_csv('../book-reccomendation-engine/books_cleaned.csv')
@@ -97,15 +97,19 @@ def recommend_desc(book):
     :rtype: List
     """
 
+    assert isinstance(book, str)
+
     if len(df1[df1['book_title'] == book.lower()]) > 0:
         desc = list(df1[df1['book_title'] == book.lower()]['book_desc'])[0]
-        print('Found match: ', book, '\n')
+        # print('Found match: ', book, '\n')
+        assert desc is not ''
         match = book
     else:
         index = np.argmax([fuzz.ratio(book.lower(), i) for i in list(df1['book_title']) if type(i)== str])
         desc = df1.iloc[index,:]['book_desc']
         print('Found closest match: ', df1.iloc[index,:]['book_title'], '\n')
         match = df1.iloc[index,:]['book_title']
+        assert isinstance(match, str)
 
     all_desc = list(df1['book_desc'])
     all_genres = list(df1['genres'])
@@ -125,7 +129,10 @@ def recommend_desc(book):
 
     response = requests.get(df1.iloc[final_index,:]['image_url'])
 
+    assert response is not ''
+
     img = Image.open(BytesIO(response.content))
+
 
     return [match, df1.iloc[final_index,:]['book_title'], df1.iloc[final_index,:]['book_desc'],
             df1.iloc[final_index,:]['book_rating'], df1.iloc[final_index,:]['book_pages'], df1.iloc[final_index,:]['book_authors'], df1.iloc[final_index,:]['image_url']]
@@ -365,7 +372,7 @@ def update_output1(value):
     Output('length', 'children'),
     Output('url', 'children'),
     [dash.dependencies.Input('demo1-dropdown', 'value')])
-def update_output2(value):
+def update_output2_v3(value):
     """ The purpose of this function is to generate the output for the dash tab "Make a Recommendation". The function takes in the value of the user selected drop down to display the top recommendations.
 
         :param value: User selected book
@@ -374,10 +381,13 @@ def update_output2(value):
         :return: Returns values for different book attributes of the top recommended book
         :rtype: str
     """
-    x = recommend_desc(value)
-    img = html.Img(src= x[6], style={'width':'10%',"min-width": "300px", "maxheight": "600px",'margin-bottom':'20px','margin':'auto'})
-    l = '{} pages.'.format(str(int(x[4])))
-    return x[1],  x[5],  x[2], x[3], l, img
+    try:
+        x = recommend_desc(value)
+        img = html.Img(src= x[6], style={'width':'10%',"min-width": "300px", "maxheight": "600px",'margin-bottom':'20px','margin':'auto'})
+        l = '{} pages.'.format(str(int(x[4])))
+        return x[1],  x[5],  x[2], x[3], l, img
+    except Exception as E:
+        return str('Recommender did not load %s' %E)
 
 @app.callback(
     Output("graph_attributes", "figure"),
