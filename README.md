@@ -35,7 +35,7 @@ As a user who is looking for a new book, I want to be able to find recommendatio
 	
 	- books_cleaned.csv (cleaned book_data.csv)
 
-<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/data_preparation.png" width="500">
+<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/data_preparation.png" width="700">
 	
 - img (images used in readme file)
 	
@@ -77,7 +77,7 @@ TOTAL                   159     30    81%
 
 **AWS framework**
 
-<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/AWS_deployment_arcchitecture.png" width="500">
+<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/AWS_deployment_arcchitecture.png" width="700">
 
 **Running our code**
 
@@ -123,14 +123,14 @@ Data exploration (different attributes for different genres and genres distribut
 
 Note: The genre distribution is depicted for the most frequent genres. Some countries might not have any books in those genres.
 
-<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/data_visualization.png" width="500">
+<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/data_visualization.png" width="700">
 
 
 Books recommendation engine
 
-<center><img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/recommendation.png" width="500"></center>
+<center><img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/recommendation.png" width="700"></center>
 
 Books search engine
 
-<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/search.png" width="500">
+<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/search.png" width="700">
 
