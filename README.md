@@ -1,11 +1,10 @@
 # ECE229_finalproject
 
-**Structure**
+**Structure of files**
 
+- Book-recomendation-engine
 
-Book-recomendation-engine
-
-data
+- data
 	- amazon_best_selling.csv (551 rows, 7 columns) Includes amazon best selling books
 	
 	- authors_dataframe_link.md (209417 rows, 20 columns) link to goodreads dataset
@@ -20,11 +19,11 @@ data
 	
 	- data_isbn.csv MODIFIED by us ?
 	
-Keyword-engine
+- Keyword-engine
 
-Notebooks
+- Notebooks
 
-Proposal_OKR.pdf (proposal and weekly OKRs)
+- Proposal_OKR.pdf (proposal and weekly OKRs)
 
-Slides.pdf (presented slides)
+- Slides.pdf (presented slides)
 
