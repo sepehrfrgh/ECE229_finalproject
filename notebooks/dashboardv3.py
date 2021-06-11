@@ -218,7 +218,21 @@ app.layout = html.Div([
 @app.callback(Output('tabs-example-content', 'children'),
               Input('tabs-example', 'value'))
 def render_content(tab):
+    """
 
+    This function takes in the name of the tab and generate the content for different tabs.
+
+    :param name: tab.
+    :type name: str.
+    :returns:  list -- A list of HTML object.
+
+    """
+    assert isinstance(tab,str)
+    assert tab in ['Genres Distribution for Different Countries',
+                    'Data Exploration Based on Genres',
+                    'Search Engine',
+                    'Make a Recommandation']
+                    
     if tab == 'Data Exploration based on Generes':
         return [
             html.H3('Histogram of Attributes',style={'font-size':'25px','color':'#10b09b','margin':'auto','margin-top':'10px','text-align':'center'}),
