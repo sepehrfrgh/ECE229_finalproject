@@ -22,7 +22,6 @@ One of the most challenging problems for book lovers is to find exciting books a
 	
 	- countries_genres_freq.csv CREATED from book_data.csv and authors_df.csv dataframes containing number of genres frequencies for different countries
 	
-	- data_isbn.csv MODIFIED by us ?
 	
 - Keyword-engine
 
@@ -35,3 +34,12 @@ One of the most challenging problems for book lovers is to find exciting books a
 **Documentation**
 
 Find Sphinx html builds under notebook/doc/build/html
+
+**Testing**
+
+Name                  Stmts   Miss  Cover   Missing
+---------------------------------------------------
+dashboardv3.py          149     30    80%   63, 242-360, 389-391, 410-416, 424-436, 448
+test_dashboardv3.py      10      0   100%
+---------------------------------------------------
+TOTAL                   159     30    81%
