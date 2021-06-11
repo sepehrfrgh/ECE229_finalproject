@@ -44,7 +44,9 @@ One of the most challenging problems for book lovers is to find exciting books a
 
 	- **Dashboard.ipynb** (The final dashboard code)
 
-	- 
+	- dashboard.py (initial deployment test)
+	
+	- test_dashboardv3.py (dashboard test)
 
 - Proposal_OKR.pdf (proposal and weekly OKRs)
 
