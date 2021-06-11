@@ -11,4 +11,3 @@ def test_book_engine():
 def test_get_jaccard_sim():
     test = get_jaccard_sim('To Kill a Mockingbird', 'Da Vinci Code')
 
-recommend_desc('The Da Vinci Code')
