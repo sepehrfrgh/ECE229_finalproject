@@ -32,6 +32,6 @@ One of the most challenging problems for book lovers is to find exciting books a
 
 - Slides.pdf (presented slides)
 
-** Documentation**
+**Documentation**
 
 Find Sphinx html builds under notebook/doc/build/html
