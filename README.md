@@ -1,4 +1,4 @@
-<img width="588" alt="Screen Shot 2021-06-11 at 4 02 23 AM" src="https://user-images.githubusercontent.com/27737573/121652635-d80c6580-ca69-11eb-935b-711588ca78de.png">
+
 # ECE229_finalproject
 
 **Problem & Background**
