@@ -66,4 +66,41 @@ TOTAL                   159     30    81%
 	
 ```
 
+**Running our code**
+
+We have uploaded the main Jupyter notebook which includes the code for creating our dashboard in  /notebooks/Dashboard.ipynb
+
+STEPS TO RUN OUR NOTEBOOK:
+- (1) Clone/Download our repository 
+```
+git clone https://github.com/sepehrfrgh/ECE229_finalproject
+```
+- (2) After the download has finished, 
+- (3) open Terminal, and type in the command 'jupyter notebook'. a window should pop up and follow the file path to get to where your 'Dashboard.ipynb' and click to open it
+- (4) make sure to pip or conda install the 3rd party modules we have listed below 
+- (5) Run our Jupyter Notebook
+
+Note: We are using this version of Python:
+```
+Python 3.8 
+```
+
+**Main Third-party modules we have used**
+
+- matplotlib
+- pandas
+- sklearn
+- numpy
+- nltk
+- dash
+- urllib
+- imageio
+- string
+- spacy
+- math
+- dash_core_components
+- dash_html_components
+- dash.dependencies
+- dash.exceptions
+- scipy
 
