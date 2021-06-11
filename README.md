@@ -5,6 +5,9 @@
 
 One of the most challenging problems for book lovers is to find exciting books amongst the plethora of books. When we go to the library and buy or borrow books, we risk our time, effort, and potentially money to find a book that we like. To reduce the so-called risks, we want to propose a recommendation system that helps readers choose the books that fit their needs and tastes. To do this, we want to investigate the passing trend and a combination of a book’s attributes such as genre, author and their writing experience, publishing year, etc. Also, other than filtering options, to create a more customized recommendation, the user would adjust the weight of each attribute to generate recommendations based on their preferences. 
 
+**User story**
+As a user who is looking for a new book, I want to be able to find recommendations based on my preferred genre, author, writing style, and publishing year. I want to be able to see how the book I’m reading fits into each category and to find books similar to the books I like. As a user with preferences in the book's attribute, I want to be able to sort through the library and search through books that match my descriptions. As a new reader, I want to be able to visually see the availability of genres and other book attributes and to find easy to read books based on which ones I want to try.  As an avid reader, I want to be able to input all the books I’ve read before, and to get recommendations for books I might want to try next. 
+
 
 **Structure of files**
 
