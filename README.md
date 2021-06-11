@@ -123,12 +123,14 @@ Data exploration (different attributes for different genres and genres distribut
 
 Note: The genre distribution is depicted for the most frequent genres. Some countries might not have any books in those genres.
 
-<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/date_visualization.png" width="500">
+<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/data_visualization.png" width="500">
 
 
 Books recommendation engine
-<img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/recommendation.png" width="500">
+
+<center><img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/recommendation.png" width="500"></center>
 
 Books search engine
+
 <img src="https://github.com/sepehrfrgh/ECE229_finalproject/blob/main/img/search.png" width="500">
 
